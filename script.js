@@ -12,10 +12,6 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
   openingHours: {
     thu: {
       open: 12,
@@ -30,40 +26,76 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
 
-const [first, second] = restaurant.categories;
-console.log(first, second);
+const { name, openingHours, categories } = restaurant;
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+console.log(name, openingHours, categories);
 
-//Switching Variables
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
 
-// const temp = main;
-// main = secondary;
-// secondary = temp;
+console.log(restaurantName, hours, tags);
 
-console.log(main, secondary);
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
+//deafualt values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-//receive 2 return values from a function
+//mutating variables
 
-const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
 
-//Nested destructuring
-const nested = [2, 4, [5, 6]];
+({ a, b } = obj);
+console.log(a, b);
 
-// const [i, , j] = nested;
+//nested objects
+const {
+  fri: { open, close },
+} = openingHours;
 
-// console.log(i, j);
+console.log(open, close);
 
-const [i, , [j, k]] = nested;
-console.log(i, j, k);
+// const [first, second] = restaurant.categories;
+// console.log(first, second);
 
-//Default values
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
 
-const [p = 1, q = 2, r = 3] = [8, 9];
-console.log(p, q, r);
+// //Switching Variables
+
+// // const temp = main;
+// // main = secondary;
+// // secondary = temp;
+
+// console.log(main, secondary);
+// [main, secondary] = [secondary, main];
+// console.log(main, secondary);
+
+// //receive 2 return values from a function
+
+// const [starter, mainCourse] = restaurant.order(2, 0);
+// console.log(starter, mainCourse);
+
+// //Nested destructuring
+// const nested = [2, 4, [5, 6]];
+
+// // const [i, , j] = nested;
+
+// // console.log(i, j);
+
+// const [i, , [j, k]] = nested;
+// console.log(i, j, k);
+
+// //Default values
+
+// const [p = 1, q = 2, r = 3] = [8, 9];
+// console.log(p, q, r);
